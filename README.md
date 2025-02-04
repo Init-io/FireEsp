@@ -1,6 +1,7 @@
----
-
 # FireEsp - A C++ Firebase Library for Arduino
+[![Arduino Library](https://img.shields.io/badge/Arduino-Library-blue.svg)](https://docs.arduino.cc/libraries/fireesp/?_gl=1*tsbv28*_up*MQ..*_ga*OTc3MDE5NDYxLjE3Mzg2OTIzNDg.*_ga_NEXN8H46L5*MTczODY5MjM0Ni4xLjEuMTczODY5MjQxMi4wLjAuNDU4ODMyODky)
+![GitHub Release](https://img.shields.io/github/v/release/init-io/FireEsp?label=release)
+[![License](https://img.shields.io/github/license/init-io/FireEsp)](LICENSE)
 
 FireEsp is a lightweight C++ library that simplifies the integration of Firebase services into your Arduino projects. It provides classes to interact with Firebase Authentication, Realtime Database, and Server Configuration. This library is designed for ease of use and aims to make Firebase integration seamless for IoT and embedded projects using Arduino-compatible boards.
 
