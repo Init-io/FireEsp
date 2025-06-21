@@ -9,6 +9,7 @@ private:
     FbServer& server;  // Reference to FbServer
     String idToken;
     String localId;
+    String refreshToken;
 
     // Helper method for HTTP requests
     String httpRequest(String method, String url, String payload);
@@ -30,10 +31,12 @@ public:
     bool verifyEmail(String idToken);
     bool checkEmailVerified(String idToken);
     bool deleteUser(String idToken);
+    bool refreshIdToken(String refreshToken);
 
     // Getters
     String getIdToken();
     String getUserId();
+    String getRefreshToken();
 };
 
 #endif
