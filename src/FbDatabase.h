@@ -14,6 +14,10 @@ class FbDatabase {
     String get(String path, String idToken = "");
     bool remove(String path, String idToken = "");
 
+    // New JSON methods
+    bool putJson(String path, String jsonPayload, String idToken = "");
+    String getJson(String path, String idToken = "");
+
   private:
     FbServer& server;  // Store reference to the FbServer instance
     String httpRequest(String method, String url, String payload);
