@@ -26,6 +26,17 @@ bool FbDatabase::put(String path, String key, int value, String idToken) {
     return response.indexOf("error") == -1;
 }
 
+// Put JSON directly to the database
+bool FbDatabase::putJson(String path, String jsonPayload, String idToken) {
+    String url = server.getDatabaseURL() + (path.startsWith("/") ? path : "/" + path) + ".json" +
+                 (idToken.length() > 0 ? "?auth=" + idToken : "");
+    String response = httpRequest("PATCH", url, jsonPayload);
+
+    Serial.println("PUT JSON Response: " + response);
+    return response.indexOf("error") == -1;
+}
+
+
 // Update (String value) - Alias for put
 bool FbDatabase::update(String path, String key, String value, String idToken) {
     return put(path, key, value, idToken);
@@ -52,9 +63,21 @@ String FbDatabase::get(String path, String idToken) {
     return payload; // Return the cleaned payload
 }
 
+// Get raw JSON from the database
+String FbDatabase::getJson(String path, String idToken) {
+    String url = server.getDatabaseURL() + (path.startsWith("/") ? path : "/" + path) + ".json" +
+                 (idToken.length() > 0 ? "?auth=" + idToken : "");
+    String response = httpRequest("GET", url, "");
 
+    Serial.println("GET JSON Response: " + response);
 
+    if (response.indexOf("error") != -1) {
+        return response; // Return error message as is
+    }
 
+    response.trim(); // Clean extra spaces
+    return response; // Return raw JSON
+}
 
 // Remove data from the database
 bool FbDatabase::remove(String path, String idToken) {
